@@ -7,6 +7,6 @@ whereas admins, registrars and teachers can view and edit information about stud
 
 The system was written in Java using MySQL to store all information and simulates the software development process, from initial conception to having written fully tested software. Requirements from a design brief were analysed and modelled using UML diagrams aiding the developers in understanding stakeholders, actors, initial requirements, GUI design and database schema. 
 
-## Useage
+## Usage
 
-Ensure Java 8.0+ is installed and download the jar file.
+Setup the database locally or on a remote server with MySQL installed (Note that this system requires MySQL 8.0+ to run). Ensure Java 8.0+ is installed and download the jar file. 
