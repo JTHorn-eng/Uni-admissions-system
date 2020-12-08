@@ -20,9 +20,8 @@ import teachers.Teacher;
  */
 public class Database {
 
-	private static final String CONNECTION_ARG = "jdbc:mysql://localhost:3306/team052?user=root&password=04be7a6d";
-	// private static final String CONNECTION_ARG =
-	// "jdbc:mysql://stusql.dcs.shef.ac.uk:3306/team052?user=team052&password=04be7a6d";
+     private static final String CONNECTION_ARG = "jdbc:mysql://localhost:3306/team052?user=root&password=04be7a6d";
+	 //private static final String CONNECTION_ARG = "jdbc:mysql://stusql.dcs.shef.ac.uk:3306/team052?user=team052&password=04be7a6d";
 
 	public static void initConnection() {
 
@@ -38,7 +37,7 @@ public class Database {
 		try {
 			con = DriverManager.getConnection(CONNECTION_ARG);
 			try (Statement stmt = con.createStatement()) {
-				System.out.println("Using database: " + stmt.execute("USE test;"));
+				System.out.println("Using database: " + stmt.execute("USE team052;"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -1069,11 +1068,14 @@ public class Database {
 			tutorInfo = con.prepareStatement("SELECT * FROM Tutor WHERE tutorId=?");
 			tutorInfo.setInt(1, set.getInt(1)); // supply tutorId
 			tutorRes = tutorInfo.executeQuery();
-
 			// point to tutor name
-			while (tutorRes.next())
-				output += " " + tutorRes.getString(2); // tutor name
-
+			while (tutorRes.next())	{
+				if (tutorRes.wasNull()) {
+					output += " No Department";
+				} else {
+					output += " " + tutorRes.getString(2); // tutor name
+				}
+			}
 			set.close();
 			tutorRes.close();
 			con.close();

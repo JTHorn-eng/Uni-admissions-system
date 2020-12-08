@@ -41,10 +41,20 @@ public class StudentFrame extends JFrame {
 	
 	public void loadStudentInfo(String user) {
 		String[] info = Database.getStudentInfo(user).split(" ");
-		ireg.setText(info[0]);
-		iname.setText(info[1] + " " + info[2] + " " + info[3] );
-		iEmail.setText(info[4]);
-		iTutor.setText(info[5]);
+		System.out.println(info.length);
+		for (int x = 0; x < info.length; x++) {
+			switch(x) {
+			case 0: ireg.setText(info[0]); break;
+			case 1: 
+			case 2: 
+			case 3: iname.setText(info[1] + " " + info[2] + " " + info[3]); break;
+			case 4: iEmail.setText(info[4]); break;
+			case 5: iTutor.setText(info[5]); break;
+			default:
+				break;
+			}
+		}
+	
 
 		revalidate();
 		
